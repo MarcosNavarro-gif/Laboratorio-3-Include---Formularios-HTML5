@@ -129,65 +129,12 @@ http://localhost/TallerAspirantes/
 
 ---
 
-## Resultado
-
-**Formulario de registro**
-
-![Formulario](assets/formulario.png)
-
-**Registro exitoso**
-
-![Registro exitoso](assets/resultado.png)
-
-**Validación de edad**
-
-![Error de edad](assets/error_edad.png)
-
-**Carpeta de fotos protegida (403)**
-
-![Acceso denegado](assets/forbidden.png)
-
----
-
 ## Dificultades y Soluciones
 
 **Problema 1: El `.htaccess` mostraba su contenido en el navegador**
 > Al abrir la carpeta de fotos se leía el texto del archivo en vez de bloquear el acceso.
 
 **Solución:** El archivo había perdido el punto inicial y se llamaba `htaccess`. Renombrarlo a `.htaccess` (desde VS Code o con `ren htaccess .htaccess`). Después de eso la carpeta responde con **403 Forbidden**.
-
----
-
-**Problema 2: Caracteres raros en los comentarios (`ejecuciÃ³n`)**
-> El navegador mostraba mal las tildes de los comentarios del `.htaccess`.
-
-**Solución:** Es un problema de codificación al mostrar el archivo. Se evita escribiendo los comentarios del `.htaccess` sin tildes.
-
----
-
-**Problema 3: "sofia" no se convertía en "Sofía"**
-> El formato título pone la inicial en mayúscula, pero PHP no agrega tildes que el usuario no escribió.
-
-**Solución:** Usar `mb_convert_case(mb_strtolower($texto), MB_CASE_TITLE)`, que conserva las tildes escritas ("SOFÍA" pasa a "Sofía"). Las funciones sin `mb_` no manejan bien los caracteres con tilde.
-
----
-
-**Problema 4: No aparecían fotos en `uploaded_files/`**
-> Después de enviar el formulario, la carpeta solo tenía el `.htaccess`.
-
-**Solución:** La foto solo se guarda cuando todas las validaciones pasan. Se hizo un registro con datos válidos (edad entre 18 y 70 y una imagen menor a 2 MB) y la foto apareció en la carpeta.
-
----
-
-**Problema 5: Evitar subir las fotos de prueba al repositorio**
-> Las fotos contienen datos personales y no deben quedar en GitHub.
-
-**Solución:** Crear un `.gitignore` que ignora el contenido de `uploaded_files/` pero conserva `.gitkeep` y `.htaccess`:
-```
-uploaded_files/*
-!uploaded_files/.gitkeep
-!uploaded_files/.htaccess
-```
 
 ---
 

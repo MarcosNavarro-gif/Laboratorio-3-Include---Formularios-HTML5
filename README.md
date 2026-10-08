@@ -129,6 +129,12 @@ http://localhost/TallerAspirantes/
 
 ---
 
+## Resultado
+## Formulario de registro
+<img width="642" height="571" alt="image" src="https://github.com/user-attachments/assets/0c8e014a-041b-4092-9dd3-716143e89b0b" />
+
+
+
 ## Dificultades y Soluciones
 
 **Problema 1: El `.htaccess` mostraba su contenido en el navegador**
